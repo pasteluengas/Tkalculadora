@@ -6,7 +6,7 @@ Devuelve -2: Division entre cero
 def calcular(arr):
     for i in range(0, len(arr)):
         if arr[i] in ["+", "-", "*", "/"]:
-            if i == 0:
+            if i == 0 or i + 1 >= len(arr):
                 return -1
             if not isinstance(arr[i-1], (int, float)) or not isinstance(arr[i+1], (int, float)):
                 return -1

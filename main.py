@@ -1,8 +1,10 @@
 from tkinter import *
 from inCalc import calcular
+import math
 
 op = []
 clearonwrite = False
+ans = 0
 
 def addOP(val):
     global op, clearonwrite
@@ -15,7 +17,6 @@ def addOP(val):
         op.append(val)
     else:
         op[-1] = (op[-1]*10)+val
-    print(op)
 
     s1.config(text=(s1["text"] + str(val)))
 
@@ -29,8 +30,12 @@ def clearOP():
     clearonwrite = False
 
 def fullcalc():
-    global op, clearonwrite
+    global op, clearonwrite, ans
     global s1, s2
+
+    if not op:
+        clearOP()
+        return
 
     r = 0
     while len(op) > 1:
@@ -41,6 +46,7 @@ def fullcalc():
 
     if r == 0:
         s2.config(text="= " + str(op[0]))
+        ans = op[0]
     elif r == -1:
         clearOP()
         s1.config(text="Syntax Error")
@@ -50,7 +56,22 @@ def fullcalc():
 
     clearonwrite = True
                     
+def delOP():
+    global op
+    global s1, s2
+    if len(op) == 0 or len(s1["text"]) == 0:
+        return
+    if not isinstance(op[-1], (int, float)) or len(str(math.trunc(op[-1]))) == 1:
+        op.pop()
+    else:
+        op[-1] = math.trunc(op[-1]/10)
+
+    s2.config(text=" ")
+    s1.config(text=s1["text"][:-1])
+    clearonwrite = False
+
     
+
 
 window = Tk()
 window.title("Tkalculadora")
@@ -89,6 +110,8 @@ Button(root, text="*", command=lambda:addOP("*"), bg="#8888a8", fg="white").grid
 Button(root, text="/", command=lambda:addOP("/"), bg="#8888a8", fg="white").grid(row=2, column=3, sticky="nsew")
 Button(root, text="=", command=fullcalc, bg="#bc6578", fg="white").grid(row=2, column=4, sticky="nsew")
 
+Button(root, text="ANS", command=lambda:addOP(ans), bg="#bc6578", fg="white").grid(row=3, column=2, sticky="nsew")
+Button(root, text="DEL", command=delOP, bg="#bc6578", fg="white").grid(row=3, column=3, sticky="nsew")
 Button(root, text="AC", command=clearOP, bg="#bc6578", fg="white").grid(row=3, column=4, sticky="nsew")
 
 
