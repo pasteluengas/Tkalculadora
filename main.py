@@ -82,10 +82,10 @@ screens = Frame(window, bd=2, relief="groove")
 screens.pack(fill="x", padx=10, pady=10, expand=True)
 screens.columnconfigure(0, weight=1)
 
-Label(screens, fg="black", text="Casio Cannabis fx-777 pro").grid(row=0, column=0, sticky="w", padx=5)
+Label(screens, fg="black", text=" Casio Pro Fx-666 John Lennon III", font=("Arial", 8)).grid(row=0, column=0, sticky="w", padx=5)
 s1 = Label(screens, font=("Arial", 16), bg="#a8ac93", fg="black", justify="left")
 s1.grid(row=1, column=0, sticky="nsew", padx=5)
-s2 = Label(screens, font=("Arial", 16), bg="#a8ac93", fg="black", justify="right", state="disabled")
+s2 = Label(screens, font=("Arial", 16), bg="#a8ac93", fg="black", justify="right")
 s2.grid(row=2, column=0, sticky="nsew", padx=5)
 
 root = Frame(window, bd=2, relief="groove")
