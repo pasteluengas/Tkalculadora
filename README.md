@@ -43,7 +43,7 @@ Equipo que se puede consultar y solicitar
 |  Cable HDMI | Cables |
 
 ## UML
-![App Screenshot](images/diagramme.jpeg)
+![App Screenshot](/images/diagramme.jpeg)
 
 ## Miembros
 
